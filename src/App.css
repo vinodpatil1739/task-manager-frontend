@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --background-color: #f0f2f5;
+  --card-background: #ffffff;
+  --primary-text-color: #333;
+  --secondary-text-color: #555;
+  --primary-accent-color: #007bff;
+  --primary-accent-hover: #0056b3;
+  --danger-color: #dc3545;
+  --danger-hover: #c82333;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  margin: 0;
+  padding: 20px;
+}
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-text-color);
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: var(--card-background);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  align-items: center;
+}
+
+form input, form select {
+  flex-grow: 1;
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  min-width: 120px;
+  font-family: 'Poppins', sans-serif; /* <-- ADD THIS LINE */
+}
+
+form button {
+  border: none;
+  background-color: var(--primary-accent-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+}
+
+form button:hover {
+  background-color: var(--primary-accent-hover);
+}
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: var(--card-background);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  align-items: center;
+}
+
+.task-list-container {
+  background: var(--card-background);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.task-list-container h2 {
+  margin-top: 0;
+  text-align: left;
+  border-bottom: 2px solid var(--primary-accent-color);
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease-in-out;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background-color: #f9f9f9;
+}
+
+li input[type="checkbox"] {
+  margin-right: 15px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.task-type {
+  margin-left: 15px;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 10px;
+  background-color: #e9ecef;
+  color: var(--secondary-text-color);
+}
+
+li button {
+  margin-left: auto;
+  padding: 6px 12px;
+  border: none;
+  background-color: var(--danger-color);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+li button:hover {
+  background-color: #c0392b;
+}
+
+.task-completed {
+  text-decoration: line-through;
+  color: var(--secondary-text-color);
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--secondary-text-color);
+  font-style: italic;
+}
+.task-list-container ul {
+  max-height: 400px; /* You can adjust this height */
+  overflow-y: auto;
+}
+/* ADD THESE STYLES AT THE END OF App.css */
+
+.main-nav {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: var(--card-background);
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+}
+
+.main-nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: var(--primary-accent-color);
+  font-weight: 600;
+}
+
+.auth-form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--card-background);
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+}
+
+.auth-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container input {
+  margin-bottom: 15px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.error-message {
+  color: var(--danger-color);
+  text-align: center;
+}
+
+.success-message {
+  color: green;
+  text-align: center;
+}
+
+.logout-button {
+  display: block;
+  margin: 0 0 20px auto;
+  padding: 8px 16px;
+  border: none;
+  background-color: var(--danger-color);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Styles for the 'Login/Register Here' links */
+.auth-form-container p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.auth-form-container p a {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-left: 8px;
+  border: 2px solid var(--primary-accent-color);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--primary-accent-color);
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.auth-form-container p a:hover {
+  background-color: var(--primary-accent-color);
+  color: white;
+}
+/* ADD THIS STYLE AT THE END OF App.css */
+
+.show-password-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.show-password-container input {
+  margin-right: 8px;
+  margin-bottom: 0;
+}
+/* ADD THESE STYLES AT THE END OF App.css */
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.password-wrapper input {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  user-select: none; /* Prevents text selection on double click */
+}
+/* ADD THESE STYLES AT THE END OF App.css */
+
+.password-toggle-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #888; /* Sets the line color of the icon */
+}
+/* ADD THESE STYLES AT THE END OF App.css */
+
+.password-requirements {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  border: 1px solid var(--border-color);
+  font-size: 13px;
+}
+
+.password-requirements ul {
+  margin: 5px 0 0 20px;
+  padding: 0;
+}
+
+.password-requirements li {
+  padding: 2px 0;
+  border: none;
+}
