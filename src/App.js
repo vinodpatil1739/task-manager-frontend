@@ -20,7 +20,7 @@ function TaskManagerHome({ token, handleLogout }) {
   };
 
   const fetchTasks = () => {
-    getAuthAxios().get('http://localhost:8080/api/tasks')
+    getAuthAxios().get('https://task-manager-api-vinod.onrender.com/api/tasks')
       .then(response => setTasks(response.data))
       .catch(error => console.error('Error fetching tasks!', error));
   };
@@ -33,7 +33,7 @@ function TaskManagerHome({ token, handleLogout }) {
   }, [token]);
 
   const handleAddTask = (newTask) => {
-    getAuthAxios().post('http://localhost:8080/api/tasks', newTask)
+    getAuthAxios().post('https://task-manager-api-vinod.onrender.com/api/tasks', newTask)
       .then(response => {
         setTasks(prevTasks => [...prevTasks, response.data]);
       })
@@ -41,7 +41,7 @@ function TaskManagerHome({ token, handleLogout }) {
   };
   
   const handleDeleteTask = (id) => {
-    getAuthAxios().delete(`http://localhost:8080/api/tasks/${id}`)
+    getAuthAxios().delete(`https://task-manager-api-vinod.onrender.com/api/tasks/${id}`)
       .then(() => {
         // Use functional update for deleting
         setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
@@ -50,7 +50,7 @@ function TaskManagerHome({ token, handleLogout }) {
   };
 
   const handleUpdateTask = (id, updatedTask) => {
-    getAuthAxios().put(`http://localhost:8080/api/tasks/${id}`, updatedTask)
+    getAuthAxios().put(`https://task-manager-api-vinod.onrender.com/api/tasks/${id}`, updatedTask)
       .then(response => {
         // Use functional update for updating
         setTasks(prevTasks => prevTasks.map(task => (task.id === id ? response.data : task)));

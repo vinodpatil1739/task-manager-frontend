@@ -17,7 +17,7 @@ function RegisterPage() {
     setError('');
     setSuccess('');
     const newUser = { username, email, password };
-    axios.post('http://localhost:8080/api/auth/register', newUser)
+    axios.post('https://task-manager-api-vinod.onrender.com/api/auth/register', newUser)
       .then(response => {
         setSuccess('Registration successful! Redirecting to login...');
         setTimeout(() => {
