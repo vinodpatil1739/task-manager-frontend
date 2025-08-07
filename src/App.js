@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 import TaskList from './components/TaskList';
@@ -8,13 +8,16 @@ import FilterBar from './components/FilterBar';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 
+// IMPORTANT: Replace this with your actual live backend URL from Render
+const API_BASE_URL = "https://task-manager-api-vinod.onrender.com";
+
 function TaskManagerHome({ token, handleLogout }) {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState({ mode: 'week', date: new Date() });
   const getAuthAxios = () => axios.create({ headers: { Authorization: `Bearer ${token}` } });
 
   const fetchTasks = () => {
-    getAuthAxios().get('https://task-manager-api-vinod.onrender.com/api/tasks')
+    getAuthAxios().get(`${API_BASE_URL}/api/tasks`)
       .then(response => setTasks(response.data))
       .catch(error => console.error('Error fetching tasks!', error));
   };
@@ -24,19 +27,19 @@ function TaskManagerHome({ token, handleLogout }) {
   }, [token]);
 
   const handleAddTask = (newTask) => {
-    getAuthAxios().post('https://task-manager-api-vinod.onrender.com/api/tasks', newTask)
-      .then(() => fetchTasks()) // Re-fetch all tasks to get the latest list
+    getAuthAxios().post(`${API_BASE_URL}/api/tasks`, newTask)
+      .then(() => fetchTasks())
       .catch(error => console.error('Error creating task!', error));
   };
   
   const handleDeleteTask = (id) => {
-    getAuthAxios().delete(`https://task-manager-api-vinod.onrender.com/api/tasks/${id}`)
+    getAuthAxios().delete(`${API_BASE_URL}/api/tasks/${id}`)
       .then(() => setTasks(prevTasks => prevTasks.filter(task => task.id !== id)))
       .catch(error => console.error('Error deleting task!', error));
   };
 
   const handleUpdateTask = (id, updatedTask) => {
-    getAuthAxios().put(`https://task-manager-api-vinod.onrender.com/api/tasks/${id}`, updatedTask)
+    getAuthAxios().put(`${API_BASE_URL}/api/tasks/${id}`, updatedTask)
       .then(response => setTasks(prevTasks => prevTasks.map(task => (task.id === id ? response.data : task))))
       .catch(error => console.error('Error updating task!', error));
   };
@@ -58,7 +61,6 @@ function App() {
     setToken(newToken);
     localStorage.setItem('token', newToken);
   };
-
   const handleLogout = () => {
     setToken(null);
     localStorage.removeItem('token');
@@ -69,8 +71,8 @@ function App() {
       <div className="App">
         <h1>Task Manager</h1>
         <Routes>
-          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage onLogin={handleLogin} apiBaseUrl={API_BASE_URL} />} />
+          <Route path="/register" element={<RegisterPage apiBaseUrl={API_BASE_URL} />} />
           <Route path="/" element={token ? <TaskManagerHome token={token} handleLogout={handleLogout} /> : <Navigate to="/login" />} />
         </Routes>
       </div>
