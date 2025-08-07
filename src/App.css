@@ -50,7 +50,7 @@ form input, form select {
   border-radius: 6px;
   font-size: 16px;
   min-width: 120px;
-  font-family: 'Poppins', sans-serif; /* <-- ADD THIS LINE */
+  font-family: 'Poppins', sans-serif; 
 }
 
 form button {
@@ -162,7 +162,7 @@ li button:hover {
   max-height: 400px; /* You can adjust this height */
   overflow-y: auto;
 }
-/* ADD THESE STYLES AT THE END OF App.css */
+
 
 .main-nav {
   text-align: center;
@@ -222,7 +222,7 @@ li button:hover {
   border-radius: 5px;
   cursor: pointer;
 }
-/* Styles for the 'Login/Register Here' links */
+/* Styles for the 'Login/Register Here' */
 .auth-form-container p {
   text-align: center;
   margin-top: 20px;
@@ -245,7 +245,7 @@ li button:hover {
   background-color: var(--primary-accent-color);
   color: white;
 }
-/* ADD THIS STYLE AT THE END OF App.css */
+
 
 .show-password-container {
   display: flex;
@@ -258,7 +258,7 @@ li button:hover {
   margin-right: 8px;
   margin-bottom: 0;
 }
-/* ADD THESE STYLES AT THE END OF App.css */
+
 
 .password-wrapper {
   position: relative;
@@ -278,14 +278,14 @@ li button:hover {
   cursor: pointer;
   user-select: none; /* Prevents text selection on double click */
 }
-/* ADD THESE STYLES AT THE END OF App.css */
+
 
 .password-toggle-icon svg {
   width: 20px;
   height: 20px;
   stroke: #888; /* Sets the line color of the icon */
 }
-/* ADD THESE STYLES AT THE END OF App.css */
+
 
 .password-requirements {
   padding: 10px;
@@ -304,4 +304,21 @@ li button:hover {
 .password-requirements li {
   padding: 2px 0;
   border: none;
+}
+/* --- Responsive Styles for Mobile --- */
+@media (max-width: 900px) {
+  .task-list-container {
+    padding: 15px;
+  }
+
+  form, .filter-bar {
+    /* Stack the form and filter elements vertically */
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  form button, .filter-bar button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
