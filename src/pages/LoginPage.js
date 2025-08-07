@@ -11,7 +11,7 @@ function LoginPage({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/auth/login', { username, password })
+    axios.post('https://task-manager-api-vinod.onrender.com/api/auth/login', { username, password })
       .then(response => {
         onLogin(response.data.jwt);
         navigate('/');
