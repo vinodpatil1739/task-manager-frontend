@@ -9,7 +9,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 
 // IMPORTANT: Replace this placeholder with your actual live backend URL from Render
-const API_BASE_URL = "https://your-backend-url.onrender.com";
+const API_BASE_URL = "https://task-manager-api-vinod.onrender.com";
 
 function TaskManagerHome({ token, handleLogout }) {
   const [tasks, setTasks] = useState([]);
